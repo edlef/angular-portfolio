@@ -58,6 +58,7 @@ export class CommentFormComponent implements OnInit {
                 data => {
                     this.alertService.success('post successful', true);
                     this.loading = false;
+                    this.commentForm.reset();
                 },
                 error => {
                     this.alertService.error(error);

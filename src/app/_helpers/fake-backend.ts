@@ -54,7 +54,6 @@ export class FakeBackendInterceptor implements HttpInterceptor {
 
         function postComments() {
             const comment = body
-            console.log(comment);
             comment.id = comments.length ? Math.max(...comments.map(x => x.id)) + 1 : 1;
             comments.push(comment);
             localStorage.setItem('comments', JSON.stringify(comments));
@@ -62,7 +61,7 @@ export class FakeBackendInterceptor implements HttpInterceptor {
         }
 
         function getComments() {
-            return ok(comments);
+            return ok(comments.reverse());
         }
 
         function deleteComments() {

@@ -1,6 +1,18 @@
-<!--component html goes here -->
-<ul>
-    <li *ngFor="let comment of comments">
-        {{comment.username}} ({{comment.content}} )
-    </li>
-</ul>
+
+<ng-template #firstComment>
+    <h4>Soyez le premier à laisser un commentaire...</h4>
+</ng-template>
+
+<div class="card comment-shadow mt-4" *ngFor="let comment of comments">
+    <div class="card-body text-left">
+        <div class="r-flex">
+            <div class="col-md-2">
+                <img src="./assets/img/theme/thumbnail-me.jpg" alt="me" class="img-fluid rounded-circle shadow-lg" style="width: 100px;">
+            </div>
+            <div class="col-md-10">
+                <h3 class="h4 text-success username">{{ comment.username }}</h3>
+                <p>{{ comment.content }}</p>
+            </div>
+        </div>
+    </div>
+</div>

@@ -42,7 +42,6 @@ export class LoginComponent implements OnInit {
     get f() { return this.loginForm.controls; }
 
     onSubmit() {
-        console.log('ok');
         this.submitted = true;
 
         // reset alerts on submit

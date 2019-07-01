@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { first } from 'rxjs/operators';
-
 import { CommentService } from '../_services';
 
 
@@ -10,6 +9,7 @@ import { CommentService } from '../_services';
 })
 export class CommentListComponent {
     comments = [];
+
     constructor(
         private commentService: CommentService
     ) {
@@ -19,6 +19,8 @@ export class CommentListComponent {
     ngOnInit() {
         this.loadAllComments();
     }
+
+
 
     private loadAllComments() {
         this.commentService.getAll()
