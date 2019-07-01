@@ -1,0 +1,31 @@
+﻿<h2>Comment</h2>
+<form [formGroup]="commentForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+        <label for="username">Username</label>
+        <input type="text" formControlName="username" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.username.errors }" />
+        <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+            <div *ngIf="f.username.errors.required">Username is required</div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="password">Content</label>
+        <input type="password" formControlName="content" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.content.errors }" />
+        <div *ngIf="submitted && f.content.errors" class="invalid-feedback">
+            <div *ngIf="f.content.errors.required">Content is required</div>
+        </div>
+    </div>
+    <div class="form-group">
+        <button [disabled]="loading" class="btn btn-primary">
+            <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+            Post
+        </button>
+    </div>
+</form>
+
+<div>
+    <ul>
+        <li *ngFor="let comment of comments">
+            {{comment.username}} ({{comment.content}} )
+        </li>
+    </ul>
+</div>

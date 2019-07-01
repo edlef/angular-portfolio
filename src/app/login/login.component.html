@@ -1,0 +1,69 @@
+﻿<main>
+    <section class="section section-shaped section-lg">
+        <div class="shape shape-primary">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <div class="container pt-lg-md">
+            <div class="row justify-content-center">
+                <div class="col-lg-5">
+                    <div class="card bg-secondary shadow border-0">
+                            <div class="card-body px-lg-5 py-lg-5">
+                                <div class="text-center text-muted mb-4">
+                                    <small>Sign in with credentials</small>
+                                </div>
+                                <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+                                    <div class="form-group mb-3">
+                                        <div class="input-group input-group-alternative">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text"><i class="ni ni-email-83"></i></span>
+                                            </div>
+                                        <input type="text" formControlName="username" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.username.errors }" />
+                                            <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+                                                <div *ngIf="f.username.errors.required">Username is required</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="input-group input-group-alternative">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
+                                            </div>
+                                            <input type="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+                                            <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                                                <div *ngIf="f.password.errors.required">Password is required</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="text-center">
+                                        <button [disabled]="loading" type="button" class="btn btn-primary my-4 ">
+                                                <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+                                            Login
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="row mt-3">
+                            <div class="col-6">
+                                <a href="#" class="text-light">
+                                    <small>Forgot password?</small>
+                                </a>
+                            </div>
+                        <div class="col-6 text-right">
+                            <a href="#" class="text-light">
+                                <small>Create new account</small>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>

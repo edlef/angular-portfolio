@@ -1,21 +1,67 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-  <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
-</div>
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/cli">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
-  </li>
-</ul>
+  <header class="header-global">
+    <nav id="navbar-main" class="navbar navbar-main navbar-expand-lg navbar-transparent navbar-light headroom">
+      <div class="container">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar_global" aria-controls="navbar_global" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse" id="navbar_global">
+          <div class="navbar-collapse-header">
+            <div class="row">
+              <div class="col-6 collapse-brand">
+                Edlef Kowalyk
+              </div>
+              <div class="col-6 collapse-close">
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar_global" aria-controls="navbar_global" aria-expanded="false" aria-label="Toggle navigation">
+                  <span></span>
+                  <span></span>
+                </button>
+              </div>
+            </div>
+          </div>
+          <ul class="navbar-nav navbar-nav-hover align-items-lg-center">
+            <li class="nav-item">
+              <a href="#skills" class="nav-link" role="button">
+                <img class="collapsed-nav-icon" src="./assets/img/icons/svg/colored/48px/badge-13.svg">
+                <span class="nav-link-inner--text">Compétences</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="#experience" class="nav-link" role="button">
+                  <img class="collapsed-nav-icon" src="./assets/img/icons/svg/colored/48px/diamond.svg">
+                <span class="nav-link-inner--text">Expériences</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="#portfolio" class="nav-link" role="button">
+                  <img class="collapsed-nav-icon" src="./assets/img/icons/svg/colored/48px/zoom-2.svg">
+                <span class="nav-link-inner--text">Portfolio</span>
+              </a>
+            </li>
+          </ul>
+          <ul class="navbar-nav align-items-lg-center ml-lg-auto">
+            <li class="nav-item">
+              <a [routerLink]="['/login']" class="nav-link" role="button">
+                <span class="nav-link-inner--text">Login</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link nav-link-icon" href="https://hub.docker.com/search?q=edlef&type=image" target="_blank" data-toggle="tooltip" title="Dockerhub">
+                <span>
+                    <img class="nav-icon" src="./assets/img/icons/common/dockerhub.svg">
+                </span>
+                <span class="nav-link-inner--text d-lg-none">Dockerhub</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link nav-link-icon" href="https://gitlab.com/edlef" target="_blank" data-toggle="tooltip" title="Git">
+                <span class="nav-icon-span"><i class="fa fa-github nav-icon"></i></span>
+                <span class="nav-link-inner--text d-lg-none">Git</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
 
 <router-outlet></router-outlet>
