@@ -93,6 +93,14 @@
     vertical-align: middle;
 }
 
+.login-section {
+    height: 100vh;
+}
+
+.login-form {
+    margin-top: 27%;
+}
+
 @media (max-width: 991.98px)
 {
     .tech-img {

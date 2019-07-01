@@ -22,7 +22,7 @@ export class LoginComponent implements OnInit {
         private authenticationService: AuthenticationService,
         private alertService: AlertService
     ) {
-        // redirect to home if already logged in
+        // redirect to admin if already logged in
         if (this.authenticationService.currentUserValue) {
             this.router.navigate(['/admin']);
         }
@@ -42,6 +42,7 @@ export class LoginComponent implements OnInit {
     get f() { return this.loginForm.controls; }
 
     onSubmit() {
+        console.log('ok');
         this.submitted = true;
 
         // reset alerts on submit
@@ -58,6 +59,7 @@ export class LoginComponent implements OnInit {
             .subscribe(
                 data => {
                     this.router.navigate([this.returnUrl]);
+                    this.loading = false;
                 },
                 error => {
                     this.alertService.error(error);

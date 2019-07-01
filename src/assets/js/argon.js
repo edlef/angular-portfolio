@@ -41,6 +41,7 @@ $(document).ready(function() {
 
     });
 
+
     // Headroom - show/hide navbar on scroll
     if($('.headroom')[0]) {
         var headroom  = new Headroom(document.querySelector("#navbar-main"), {
@@ -60,6 +61,11 @@ $(document).ready(function() {
             autoclose: false
         });
     });
+
+    $('[data-toggle="tooltip"]').tooltip({
+        trigger: 'hover', sanitize: false, sanitizeFn: content => content
+     });
+     
 
     // Tooltip
     $('[data-toggle="tooltip"]').tooltip();
