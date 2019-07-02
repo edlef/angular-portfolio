@@ -1,7 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { first } from 'rxjs/operators';
 import { CommentService } from '../_services';
-
 
 @Component({
     selector: 'app-comment-list',
@@ -9,6 +8,8 @@ import { CommentService } from '../_services';
 })
 export class CommentListComponent {
     comments = [];
+    user = [];
+    @Input() data;
 
     constructor(
         private commentService: CommentService
@@ -18,8 +19,19 @@ export class CommentListComponent {
 
     ngOnInit() {
         this.loadAllComments();
+        this.user = this.data;
     }
 
+    deleteComment(id: number) {
+        this.commentService.delete(id)
+            .pipe(first())
+            .subscribe(() => this.loadAllComments());
+    }   
+
+    deleteList() {
+        this.comments = [];
+        this.loadAllComments();
+    }
 
 
     private loadAllComments() {

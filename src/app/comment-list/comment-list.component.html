@@ -1,6 +1,10 @@
 
-<ng-template #firstComment>
-    <h4>Soyez le premier à laisser un commentaire...</h4>
+<div *ngIf="!user; else adminBlock">
+    <h4 i18n class="mb-5"> <span *ngIf="comments.length > 0">{{comments.length}} </span> {comments.length, plural, =0 {Soyez le premier à laisser un commentaire }=1 {commentaire} other { commentaires}}</h4>
+</div>
+
+<ng-template #adminBlock >
+    <h4 i18n class="mb-5"> <span *ngIf="comments.length > 0">{{comments.length}} </span> {comments.length, plural, =0 { Aucun commentaire }=1 {commentaire} other { commentaires}}<app-comment-delete *ngIf="comments.length > 0" (refresh)="deleteList()"></app-comment-delete></h4>
 </ng-template>
 
 <div class="card comment-shadow mt-4" *ngFor="let comment of comments">
@@ -9,10 +13,11 @@
             <div class="col-md-2">
                 <img src="./assets/img/theme/thumbnail-me.jpg" alt="me" class="img-fluid rounded-circle shadow-lg" style="width: 100px;">
             </div>
-            <div class="col-md-10">
+            <div class="col-md-19">
                 <h3 class="h4 text-success username">{{ comment.username }}</h3>
                 <p>{{ comment.content }}</p>
             </div>
         </div>
+        <button *ngIf="user" type="button" (click)="deleteComment(comment.id)" class="btn btn-danger text-right delete-comment-button">X</button>
     </div>
 </div>

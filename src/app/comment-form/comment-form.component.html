@@ -1,5 +1,6 @@
 ﻿<div class="card-body no-padding">
     <form [formGroup]="commentForm" (ngSubmit)="onSubmit()">
+        <alert></alert>
         <div class="form-group">
             <div class="input-group input-group-alternative">
                 <input type="text" formControlName="username" placeholder="Votre pseudo" class="form-control small-input" 

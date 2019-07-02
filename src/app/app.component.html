@@ -37,13 +37,26 @@
                 <span class="nav-link-inner--text">Portfolio</span>
               </a>
             </li>
+            <li class="nav-item">
+              <a [routerLink]="['/admin']" fragment="portfolio" class="nav-link" role="button">
+                  <img class="collapsed-nav-icon" src="./assets/img/icons/svg/colored/48px/zoom-2.svg">
+                <span class="nav-link-inner--text">Administration</span>
+              </a>
+            </li>
           </ul>
           <ul class="navbar-nav align-items-lg-center ml-lg-auto">
-            <li class="nav-item">
-              <a [routerLink]="['/login']" class="nav-link" role="button">
+            <li *ngIf="!currentUser; else logoutBlock" class="nav-item">
+               <a  [routerLink]="['/login']" class="nav-link" role="button">
                 <span class="nav-link-inner--text">Login</span>
               </a>
             </li>
+            <ng-template #logoutBlock>
+              <li class="nav-item">
+                  <a (click)="logout()" class="nav-link" role="button">
+                    <span class="nav-link-inner--text">Logout</span>
+                  </a>
+              </li>
+            </ng-template>
             <li class="nav-item">
               <a class="nav-link nav-link-icon" href="https://hub.docker.com/search?q=edlef&type=image" target="_blank" data-toggle="tooltip" title="Dockerhub">
                 <span>

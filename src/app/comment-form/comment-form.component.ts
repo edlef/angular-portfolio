@@ -27,8 +27,8 @@ export class CommentFormComponent implements OnInit {
 
     ngOnInit() {
         this.commentForm = this.formBuilder.group({
-            username: ['', Validators.required],
-            content: ['', Validators.required]
+            username: ['', Validators.compose([Validators.required, Validators.pattern(/^(\w+\S+)$/)])],
+            content: ['', Validators.compose([Validators.required, Validators.pattern(/^(\w+\S+)$/)])],
         });
 
         // get return url from route parameters or default to '/'
@@ -56,11 +56,12 @@ export class CommentFormComponent implements OnInit {
             .pipe(first())
             .subscribe(
                 data => {
-                    this.alertService.success('post successful', true);
                     this.loading = false;
                     this.commentForm.reset();
                 },
                 error => {
+                    console.log(error);
+
                     this.alertService.error(error);
                     this.loading = false;
         });

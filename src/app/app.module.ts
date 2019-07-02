@@ -12,6 +12,7 @@ import { AdminComponent } from './admin';
 import { LoginComponent } from './login';
 import { CommentFormComponent } from './comment-form';
 import { CommentListComponent } from './comment-list';
+import { CommentDeleteComponent } from './comment-delete';
 import { AlertComponent } from './_components';
 
 @NgModule({
@@ -22,6 +23,7 @@ import { AlertComponent } from './_components';
     LoginComponent,
     CommentFormComponent,
     CommentListComponent,
+    CommentDeleteComponent,
     AlertComponent
   ],
   imports: [

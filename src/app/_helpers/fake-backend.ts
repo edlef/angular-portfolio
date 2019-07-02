@@ -31,6 +31,8 @@ export class FakeBackendInterceptor implements HttpInterceptor {
                     return getComments();
                 case url.match(/\/comments\/\d+$/) && method === 'DELETE':
                     return deleteComments();
+                case url.match('/comments') && method === 'DELETE':
+                    return deleteAllComments();
                 default:
                     // pass through any requests not handled above
                     return next.handle(request);
@@ -42,7 +44,7 @@ export class FakeBackendInterceptor implements HttpInterceptor {
         function authenticate() {
             const { username, password } = body;
             const user = usersData.find(x => x.username === username && x.password === password);
-            if (!user) return error('Username or password is incorrect');
+            if (!user) return error("Utilisateur où mot de passe incorrects");
             return ok({
                 id: user.id,
                 username: user.username,
@@ -71,6 +73,13 @@ export class FakeBackendInterceptor implements HttpInterceptor {
             localStorage.setItem('comments', JSON.stringify(comments));
             return ok();
         }   
+
+        function deleteAllComments() {
+            if (!isLoggedIn()) return unauthorized();
+            localStorage.removeItem('comments');
+            return ok();
+        }   
+
 
         function getUsers() {
             if (!isLoggedIn()) return unauthorized();

@@ -1,6 +1,14 @@
+a {
+    cursor: pointer;
+}
+
 .main-subtitle {
     font-weight: 300;
     font-size: 2rem;
+}
+
+.footer-seperattor {
+    height: 200px;
 }
 
 .header-content {
@@ -17,6 +25,18 @@
 
 }
 
+.delete-comment-button {
+    position: absolute;
+    right: 20px;
+    top: 15px;
+    padding: 5px 10px 5px 10px;
+}
+
+.delete-all-button {
+    position: absolute;
+    right: 20px;
+}
+
 .r-flex {
     display: flex;
     margin:auto;
@@ -28,6 +48,10 @@
     margin-right: 15px;
 }
 
+
+.admin-header {
+    font-weight: 300;
+}
 
 
 .navbar-nav .nav-link {

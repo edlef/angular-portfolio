@@ -26,10 +26,6 @@ export class AdminComponent implements OnInit {
             .subscribe(comments => this.comments = comments);
     }
 
-    deleteComment(id: number) {
-        this.commentService.delete(id)
-            .pipe(first())
-            .subscribe(() => this.loadAllComments());
-    }   
+
 
 }

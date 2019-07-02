@@ -20,4 +20,8 @@ export class CommentService {
         return this.http.delete(`${environment.apiUrl}/comments/${id}`);
     }
 
+    deleteAll() {
+        return this.http.delete(`${environment.apiUrl}/comments`);
+    }
+
 }
