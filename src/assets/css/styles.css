@@ -32,6 +32,12 @@ a {
     padding: 5px 10px 5px 10px;
 }
 
+.comment-time-ago {
+    font-size: 1rem;
+    color: #525f7f;
+    font-weight: 300;
+}
+
 .delete-all-button {
     position: absolute;
     right: 20px;

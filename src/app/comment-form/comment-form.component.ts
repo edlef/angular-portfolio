@@ -1,8 +1,8 @@
-﻿import { Component, OnInit } from '@angular/core';
+﻿import { Component, OnInit, Input } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
-
+import { Comment } from '../_models';
 import { AlertService, CommentService } from '../_services';
 
 @Component({ 
@@ -10,6 +10,7 @@ import { AlertService, CommentService } from '../_services';
     templateUrl: 'comment-form.component.html' 
 })
 export class CommentFormComponent implements OnInit {
+
     commentForm: FormGroup;
     loading = false;
     submitted = false;
@@ -25,11 +26,11 @@ export class CommentFormComponent implements OnInit {
         
     }
 
+    
+
     ngOnInit() {
-        this.commentForm = this.formBuilder.group({
-            username: ['', Validators.compose([Validators.required, Validators.pattern(/^(\w+\S+)$/)])],
-            content: ['', Validators.compose([Validators.required, Validators.pattern(/^(\w+\S+)$/)])],
-        });
+
+        this.initForm();
 
         // get return url from route parameters or default to '/'
         this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
@@ -37,6 +38,15 @@ export class CommentFormComponent implements OnInit {
 
     // convenience getter for easy access to form fields
     get f() { return this.commentForm.controls; }
+
+    private initForm() {
+
+        this.commentForm = this.formBuilder.group({
+            username: ['', Validators.compose([Validators.required, Validators.pattern(/.*\S.*/)])],
+            content: ['', Validators.compose([Validators.required, Validators.pattern(/.*\S.*/)])],
+            date: new Date(),
+        });
+    }
 
     onSubmit() {
 
@@ -57,11 +67,11 @@ export class CommentFormComponent implements OnInit {
             .subscribe(
                 data => {
                     this.loading = false;
+                    this.submitted = false;
                     this.commentForm.reset();
+                    this.initForm();
                 },
                 error => {
-                    console.log(error);
-
                     this.alertService.error(error);
                     this.loading = false;
         });

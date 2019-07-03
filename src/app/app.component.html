@@ -37,7 +37,7 @@
                 <span class="nav-link-inner--text">Portfolio</span>
               </a>
             </li>
-            <li class="nav-item">
+            <li *ngIf="currentUser" class="nav-item">
               <a [routerLink]="['/admin']" fragment="portfolio" class="nav-link" role="button">
                   <img class="collapsed-nav-icon" src="./assets/img/icons/svg/colored/48px/zoom-2.svg">
                 <span class="nav-link-inner--text">Administration</span>

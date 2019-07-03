@@ -14,7 +14,7 @@
                 <img src="./assets/img/theme/thumbnail-me.jpg" alt="me" class="img-fluid rounded-circle shadow-lg" style="width: 100px;">
             </div>
             <div class="col-md-19">
-                <h3 class="h4 text-success username">{{ comment.username }}</h3>
+                <h3 class="h4 text-success username">{{ comment.username }} <span class="comment-time-ago">{{ comment.date | timeAgo }}</span></h3>
                 <p>{{ comment.content }}</p>
             </div>
         </div>

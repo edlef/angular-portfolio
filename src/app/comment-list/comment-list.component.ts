@@ -29,12 +29,13 @@ export class CommentListComponent {
     }   
 
     deleteList() {
+        console.log('delete all');
         this.comments = [];
-        this.loadAllComments();
     }
 
 
     private loadAllComments() {
+        console.log('loadcomments');
         this.commentService.getAll()
             .pipe(first())
             .subscribe(comments => this.comments = comments);

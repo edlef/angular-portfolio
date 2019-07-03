@@ -13,6 +13,8 @@ export class FakeBackendInterceptor implements HttpInterceptor {
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
         const { url, method, headers, body } = request;
 
+        let commentCopy = [];
+
         // wrap in delayed observable to simulate server api call
         return of(null)
             .pipe(mergeMap(handleRoute))
@@ -56,14 +58,15 @@ export class FakeBackendInterceptor implements HttpInterceptor {
 
         function postComments() {
             const comment = body
-            comment.id = comments.length ? Math.max(...comments.map(x => x.id)) + 1 : 1;
-            comments.push(comment);
+            commentCopy = comments;
+            comment.id = comments.length ? Math.max(...commentCopy.map(x => x.id)) + 1 : 1;
+            comments.unshift(comment);
             localStorage.setItem('comments', JSON.stringify(comments));
             return ok();
         }
 
         function getComments() {
-            return ok(comments.reverse());
+            return ok(comments);
         }
 
         function deleteComments() {
@@ -77,6 +80,7 @@ export class FakeBackendInterceptor implements HttpInterceptor {
         function deleteAllComments() {
             if (!isLoggedIn()) return unauthorized();
             localStorage.removeItem('comments');
+            comments = [];
             return ok();
         }   
 
