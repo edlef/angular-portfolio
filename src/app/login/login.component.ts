@@ -30,8 +30,8 @@ export class LoginComponent implements OnInit {
 
     ngOnInit() {
         this.loginForm = this.formBuilder.group({
-            username: ['', Validators.compose([Validators.required, Validators.pattern(/^[a-z0-9_-]{1,64}$/)])],
-            password: ['', Validators.compose([Validators.required, Validators.pattern(/^[a-z0-9_-]{1,64}$/)])],
+            username: ['admin', Validators.compose([Validators.required, Validators.pattern(/^[a-z0-9_-]{1,64}$/)])],
+            password: ['admin', Validators.compose([Validators.required, Validators.pattern(/^[a-z0-9_-]{1,64}$/)])],
         });
 
         // get return url from route parameters or default to '/'
@@ -61,7 +61,6 @@ export class LoginComponent implements OnInit {
                     this.loading = false;
                 },
                 error => {
-                    console.log(error)
                     this.alertService.error(error);
                     this.loading = false;
                 });

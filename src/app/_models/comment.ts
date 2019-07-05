@@ -3,4 +3,6 @@ export class Comment {
     username: string;
     content:  string;
     date: string;
+    image: string;
+    visible: boolean;
 }

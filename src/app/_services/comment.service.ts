@@ -24,4 +24,8 @@ export class CommentService {
         return this.http.delete(`${environment.apiUrl}/comments`);
     }
 
+    edit(comment: Comment) {
+        return this.http.put(`${environment.apiUrl}/comments`, comment);
+    }
+
 }

@@ -2,7 +2,6 @@
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
-import { Comment } from '../_models';
 import { AlertService, CommentService } from '../_services';
 
 @Component({ 
@@ -26,8 +25,6 @@ export class CommentFormComponent implements OnInit {
         
     }
 
-    
-
     ngOnInit() {
 
         this.initForm();
@@ -45,7 +42,13 @@ export class CommentFormComponent implements OnInit {
             username: ['', Validators.compose([Validators.required, Validators.pattern(/.*\S.*/)])],
             content: ['', Validators.compose([Validators.required, Validators.pattern(/.*\S.*/)])],
             date: new Date(),
+            image: 'user-'+ this.getRandomArbitrary(1,11),
+            visible: true
         });
+    }
+
+    getRandomArbitrary(min, max) {
+        return Math.floor(Math.random() * (max - min) + min);
     }
 
     onSubmit() {

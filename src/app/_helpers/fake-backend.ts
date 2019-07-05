@@ -29,6 +29,8 @@ export class FakeBackendInterceptor implements HttpInterceptor {
                     return getUsers();
                 case url.endsWith('/comments') && method === 'POST':
                     return postComments();
+                case url.endsWith('/comments') && method === 'PUT':
+                    return editComments();    
                 case url.endsWith('/comments') && method === 'GET':
                     return getComments();
                 case url.match(/\/comments\/\d+$/) && method === 'DELETE':
@@ -57,10 +59,23 @@ export class FakeBackendInterceptor implements HttpInterceptor {
         }
 
         function postComments() {
-            const comment = body
+            const comment = body;
             commentCopy = comments;
             comment.id = comments.length ? Math.max(...commentCopy.map(x => x.id)) + 1 : 1;
             comments.unshift(comment);
+            localStorage.setItem('comments', JSON.stringify(comments));
+            return ok();
+        }
+
+        function editComments() {
+            if (!isLoggedIn()) return unauthorized();
+            const editedComment = body;
+            comments.forEach((comment, index) => {
+                if(comment.id === editedComment.id) {
+                    comment.visible = false;
+                    comments[index] = editedComment;
+                }
+            });
             localStorage.setItem('comments', JSON.stringify(comments));
             return ok();
         }

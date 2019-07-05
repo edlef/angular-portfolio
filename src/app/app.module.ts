@@ -15,6 +15,8 @@ import { CommentListComponent } from './comment-list';
 import { CommentDeleteComponent } from './comment-delete';
 import { AlertComponent } from './_components';
 import {TimeAgoPipe} from 'time-ago-pipe';
+import { FooterComponent } from './footer/footer.component';
+import { CommentEditFormComponent } from './comment-edit-form/comment-edit-form.component';
 
 
 @NgModule({
@@ -27,7 +29,9 @@ import {TimeAgoPipe} from 'time-ago-pipe';
     CommentListComponent,
     CommentDeleteComponent,
     AlertComponent,
-    TimeAgoPipe
+    TimeAgoPipe,
+    FooterComponent,
+    CommentEditFormComponent
   ],
   imports: [
     BrowserModule,

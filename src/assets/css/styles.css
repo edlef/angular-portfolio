@@ -7,7 +7,7 @@ a {
     font-size: 2rem;
 }
 
-.footer-seperattor {
+.footer-seperator {
     height: 200px;
 }
 
@@ -29,6 +29,20 @@ a {
     position: absolute;
     right: 20px;
     top: 15px;
+    padding: 5px 10px 5px 10px;
+}
+
+.edit-comment-button {
+    position: absolute;
+    right: 65px;
+    top: 15px;
+    padding: 5px 10px 5px 10px;
+}
+
+.save-comment-button {
+    position: absolute;
+    left: 48%;
+    bottom: 10px;
     padding: 5px 10px 5px 10px;
 }
 

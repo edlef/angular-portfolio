@@ -1,0 +1,29 @@
+<div *ngIf="visible" class="card comment-shadow mt-4">
+    <div  class="card-body text-left mb-5">
+        <form [formGroup]="commentForm" (ngSubmit)="onSubmit()">
+            <div class="r-flex">
+                <div class="col-md-2">
+                    <img src="./assets/img/users/{{ comment.image }}.jpg" alt="me" class="img-fluid rounded-circle shadow-lg" style="width: 100px;">
+                </div>
+                <div class="col-md-19">
+                    <h3 class="h4 text-success username">
+                        <alert></alert>
+                        <div class="form-group">
+                            <div class="input-group input-group-alternative">
+                                <input  type="text" formControlName="username" placeholder="Votre pseudo" class="form-control small-input" 
+                                [ngClass]="{ 'is-invalid': submitted && f.username.errors }" />
+                                <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+                                    <div *ngIf="f.username.errors.required">Username is required</div>
+                                </div>
+                            </div>
+                        </div>
+                    </h3>
+                    <textarea  class="form-control form-control-alternative" formControlName="content" 
+                    name="name" rows="4" cols="80" [ngClass]="{ 'is-invalid': submitted && f.content.errors }" 
+                    placeholder="Votre message...">{{ comment.content }}</textarea>
+                </div>
+            </div>
+            <button type="button" (click)="state()" (click)="edit(comment.id)" class="btn btn-success text-right save-comment-button">Save</button>
+        </form>
+    </div>
+</div>
