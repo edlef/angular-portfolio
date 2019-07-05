@@ -3,6 +3,16 @@
 
 Edlef's personnal portfolio project under angular !
 
+**Projet Portfolio réalisé sous Angular.**
+
+Pour accéder au backend depuis /login :
+
+
+user : admin
+pass : admin
+
+Pour des raisons pratiques les données sont stockées dans le localStorage via un faux backend.  
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.0.6.
 
 ## Development server
